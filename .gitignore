@@ -1,0 +1,12 @@
+*.swp
+*.aux
+*.dvi
+*.fdb_latexmk
+*.fls
+*.log
+*.pdf
+*.synctex.gz
+*.toc
+*.out.pyg
+.DS_Store
+.python-version
