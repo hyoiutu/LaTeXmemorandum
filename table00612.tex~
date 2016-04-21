@@ -1,0 +1,1 @@
+\newlength{\myheight}\setlength{\myheight}{1cm}\newlength{\myheighta}\setlength{\myheighta}{2cm}\begin{tabular}{|c|c|}\hlinedefault & default \\\hline\rule{0cm}{\myheight} 1cm‚Ì‚‚³ & ‚ ‚  \\\hline\rule{0cm}{\myheighta} 2cm‚Ì‚‚³ & ‚¢‚¢ \\\hlinedefault & default \\\hline\end{tabular}

@@ -41,6 +41,12 @@
 	\end{tabular}
 \end{table}
 
+\section{新しい長さの定義}
+次のようにすることで新しい長さを定義できる.
+\begin{excode}
+    \newlength{長さの名前}
+    \setlength{長さの名前}{初期値}
+\end{excode}
 
 \section{特殊文字の出力} 
 \begin{table}[H]
@@ -198,5 +204,66 @@ graphcsパッケージを読み込み次のように記述する.
 
 \LaTeX などの組版処理システムにおいてはクォートで文章を囲む時にルールがある.
 シングルクォートで囲む時は始まりは\verb|`|(バッククォート)で始まり, \verb|'|(シングルクォート)で終わる.ダブルクォートで囲む時は始まりは\verb|``|(バッククォート2つ)始まり,\verb|''|(シングルクォート2つ)で終わる.
+
+\section{ページを跨ぐ表の作り方}
+通常の表はtabular環境とtable環境を使って作るが1ページに収まらないような大きな表は通常,ページを跨ぐことができない.この場合はlongtableパッケージを読み込みlongtable環境を使う.
+\begin{excode}
+    \usepackage{longtable}
+    \begin{document}
+    \begin{longtable}[表の位置指定]{行数指定}
+        ...
+    \end{longtable}
+\end{excode}
+\begin{table}[htbp]
+    \centering
+    \caption{表の位置指定に使えるオプション}
+    \begin{tabular}{c|c}
+        オプション & 効果 \\ \hline
+        l & 左詰め \\ \hline
+        c & 中央揃え \\ \hline
+        r & 右詰め \\ 
+    \end{tabular}
+\end{table}
+行数指定は通常のtabular環境と一緒である.
+
+\section{表の各セルの高さを調整する方法}
+全てセルを高くするには次のようにする.
+\begin{excode}
+    \renewcommand{\arraystretch{拡大率}}
+\end{excode}
+一部のセルだけ高くするにはruleコマンドを使う.
+\begin{excode}
+\newlength{¥myheight}
+\setlength{¥myheight}{1cm}
+\newlength{¥myheighta}
+\setlength{¥myheighta}{2cm}
+
+\begin{tabular}{|c|c|}
+\hline
+default & default \\
+\hline
+\rule{0cm}{¥myheight} 1cmの高さ & ああ \\
+\hline
+\rule{0cm}{¥myheighta} 2cmの高さ & いい \\
+\hline
+default & default \\
+\hline
+\end{tabular}
+\end{excode}
+このコードの実行結果は次のようになる.
+\input{table00612}
+
+\section{美しいボックスを描けるtcolorbox環境}
+使うにはtcolorboxパッケージを読み込む.例などは http://ftp.jaist.ac.jp/pub/CTAN/macros/latex/contrib/tcolorbox/tcolorbox.pdfに載っている.
+
+\section{tcolorbox環境で美しい表を作る}
+作るにはtcolorbox,array,tabularxのパッケージを読み込む.tcolorbox環境のオプションで次のように指定することで表を作ることができる.
+\begin{excode}
+    \begin{tcolorbox}[tabularx*={...]
+            ...
+    \end{tcolorbox}
+\end{excode}
+オプション内の...に続くのは実際にtabularxで使える命令やオプションである.
+例として,同じディレクトリにあるtcolortable.texを参照するとよい.
 \end{document}
 

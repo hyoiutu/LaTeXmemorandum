@@ -1,0 +1,57 @@
+\documentclass[a4j]{ltjsarticle}
+
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{luatexja}
+\usepackage{luatexja-fontspec}
+\usepackage{tcolorbox}
+\usepackage{array,tabularx}
+\usepackage{xparse}
+\pagestyle{empty}
+
+\tcbuselibrary{raster,skins,breakable}
+
+
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+\tcbset{%
+    enhanced,
+    fontupper=\Large\sffamily,
+    colback=white,
+    colframe=red!51!black,
+    breakable
+}
+
+\setlength{\textheight}{800truept}
+\setlength{\textwidth}{500truept}
+\setlength{\oddsidemargin}{-30truept}
+\setlength{\topmargin}{-70truept}
+
+\begin{document}
+\begin{tcolorbox}[
+    breakable,
+    tabularx*={\renewcommand{\arraystretch}{3.0}}{C|C|C|C|C}
+    ]
+& <in> & <home> & <bld:v> & <campus> \\\hline\hline
+川原 義弘   & & & & \\ \hline    
+向山 輝     & & & & \\ \hline
+村本 和也   & & & & \\ \hline
+李 雨坤     & & & & \\ \hline
+相澤 孝生   & & & & \\ \hline
+砂山 京太   & & & & \\ \hline
+長谷川 祐樹 & & & & \\ \hline
+柳澤 大貴   & & & & \\ \hline
+佐藤 洋介   & & & & \\ \hline
+岡田 学     & & & & \\ \hline
+野崎 翔太   & & & & \\ \hline
+\end{tcolorbox}
+\begin{tcolorbox}[tabularx*={\renewcommand{\arraystretch}{3.0}}{C|C|C|C|C}]
+& <in> & <home> & <out> & <campus> \\\hline\hline
+石川 耕輔 &  &  &  &  \\\hline
+児島 悠太 &  &  &  &  \\\hline
+鈴木 神威 &  &  &  &  \\\hline
+南波 匠   &  &  &  &  \\\hline
+平森 貴嗣 &  &  &  &  \\\hline
+藤田 優貴 &  &  &  &  \\\hline
+藤原 渓亮 &  &  &  &  \\\hline
+\end{tcolorbox}
+\end{document}
