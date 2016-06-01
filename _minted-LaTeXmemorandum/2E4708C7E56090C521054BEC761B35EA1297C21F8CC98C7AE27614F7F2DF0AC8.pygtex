@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+      \PYG{k}{\PYGZbs{}NewDocumentEnvironment}\PYG{n+nb}{\PYGZob{}}myverbatim\PYG{n+nb}{\PYGZcb{}\PYGZob{}}\PYG{c}{\PYGZpc{}}
+      \PYG{k}{\PYGZbs{}VerbatimEnvironment}
+      \PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}Verbatim\PYG{n+nb}{\PYGZcb{}}
+  \PYG{n+nb}{\PYGZcb{}}
+  \PYG{n+nb}{\PYGZob{}}
+      \PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}Verbatim\PYG{n+nb}{\PYGZcb{}}
+  \PYG{n+nb}{\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\end{Verbatim}

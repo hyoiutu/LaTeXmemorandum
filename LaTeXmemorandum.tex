@@ -1,9 +1,14 @@
-\documentclass[12pt,uplatex]{jsarticle}
-\usepackage{ascmac}
+% ----- define document
+\documentclass[12pt]{ltjsarticle}
+% ----- read package
+\usepackage{luatexja}
+\usepackage{luatexja-fontspec}
+\usepackage{lltjp-tascmac}
 \usepackage{here}
 \usepackage{xparse}
 \usepackage{verbatim}
-\usepackage[cache=false]{minted}
+\usepackage{minted}
+% ----- define my Macros
 \newminted[excode]{latex}{%
     linenos,
     frame=lines,
@@ -11,259 +16,305 @@
     framesep=2mm
 }
 \NewDocumentEnvironment{myverbatim}{}{\verbatim}{\endverbatim}
+% ----- title page
 \title{\LaTeX 覚書}
-\author{\vspace{-1zh}}\date{\vspace{-1zh}}
+\author{\vspace{-1\zh}}\date{\vspace{-1\zh}}
+% ----- main pages
 \begin{document}
-\maketitle
-\tableofcontents
-\clearpage
-\section{\textbackslash author及び\textbackslash dateの省略方法}
-\begin{excode}
-    \author{\textbackslash vspace{-1zh}}
-    \date{\textbackslash vspace{-1zh}}
-\end{excode}
-と入力する.
-\section{長さの単位}
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|c|c|} \hline
-		pt & ポイント(\verb|1pt| $\approx$ \verb|0.35mm|) \\ \hline
-		pc & パイカ(\verb|1pc| = \verb|12pt|) \\ \hline
-		bp & big point(\verb|1bp| $\approx$ \verb|1in|) \\ \hline
-		dd & didot point(\verb|1dd| $\approx$ \verb|1.07pt|) \\ \hline
-		mm & ミリメートル(\verb|1mm| $\approx$ \verb|2.85pt|) \\ \hline
-		cm & センチメートル(\verb|1cm| $\approx$ \verb|10mm|) \\ \hline
-		in & インチ(\verb|1in| = \verb|25.4mm|) \\ \hline
-		em & 現在有効な書体の文字Mの幅 \\ \hline
-		ex & 現在有効な書体の文字xの高さ \\ \hline
-		zw & 現在有効な全角漢字の幅 \\ \hline
-		zh & 現在有効な全角漢字の高さ \\ \hline
-	\end{tabular}
-\end{table}
+  % ----- output title page\end{docu\end{document}ment}
+  \maketitle
+  % ----- output table of contents
+  \tableofcontents
+  % ----- new page
+  \clearpage
 
-\section{新しい長さの定義}
-次のようにすることで新しい長さを定義できる.
-\begin{excode}
-    \newlength{長さの名前}
-    \setlength{長さの名前}{初期値}
-\end{excode}
+  \section{\textbackslash author及び\textbackslash dateの省略方法}
 
-\section{特殊文字の出力} 
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|c|c|} \hline
-		出力 & 入力 \\ \hline
-		\# & \verb|\#| \\ \hline
-		\$ & \verb|\$| \\ \hline
-		\% & \verb|\%| \\ \hline
-		\& & \verb|\&| \\ \hline
-		\textasciitilde & \verb|\textasciitilde| \\ \hline
-		\_ & \verb|\_| \\ \hline
-		\textasciicircum & \verb|\textasciicircum| \\ \hline
-		\textbackslash & \verb|\textbackslash|(数式モード内では\verb|\backslash|) \\ \hline
-		\{ & \verb|\{| \\ \hline
-		\} & \verb|\}| \\ \hline
-	\end{tabular}
-\end{table}
-\section{余白レイアウトの仕方}
-\begin{excode}
-        \usepackage\{\layout}
-        \begin{document}
-        \layout
-        ...
-        \end{document}
-\end{excode}
-でレイアウトを出力して余白を調整したい部分の名称を確認する.その後プリアンブル部で
-\begin{excode}
-        \setlength{余白部分の名称}{長さ}
-        \setlength{余白部分の名称}{長さ}
-        $\vdots$
-\end{excode}
-のように調整する.長さの調整の時に例えばcm指定の場合はtruecmのように先頭にtrueをつけなければ実際の長さにならない.
+  \begin{excode}
+      \author{\textbackslash vspace{-1zh}}
+      \date{\textbackslash vspace{-1zh}}
+  \end{excode}
+  と入力する.
 
-\section{複数の著者と所属をつける方法}
-\verb|\usepackage{authblk}|でパッケージを読み込んで
-\begin{excode}
-    \author[1]{hoge}
-    \author[2]{fuga}
-    
-    \affil[1]{piyo}
-    \affil[2]{hogehoge}
-\end{excode}
+  \section{長さの単位}
 
-\section{段落の最初に字下げしない方法}
-字下げしたくない段落で\verb|\noindent|と書く.すべての段落で字下げを行わないようにするにはプリアンブル部に\verb|\parindent = 0pt|と書く.
+  \begin{table}[H]
+  	\centering
 
-\section{mintedで載せたソースコードがページをまたぐ場合}
-通常,mintedで載せたソースコードはページを跨いでも適切に処置してくれるが以下のいずれかの条件を満たす時,ソースコードがページをはみ出す.
-\begin{itemize}
-    \item listing環境を使った時
-    \item mintedにbgcolorオプションを付加した時
-\end{itemize}
-mintedで載せたソースコードが1ページに収まらない場合はmdfaramed環境を使う.次のような構造で使う.
-\begin{excode}
-    \usepackage{mdframed}
-    \usepackage[cache=false]{minted}
-    \begin{document}
-    \begin{mdframed}
-        \begin{minted}{c}
-        ...
-        \end{minted}
-    \end{mdframed}
-    \end{document}
-\end{excode}
-mdframed環境はデフォルトでボックスで囲まれているのでmintedの上下左右の線とかぶる場合がある.その場合は次のようなオプションをつけるとよい.
-\begin{excode}
-   \begin{mdframed}[
-       topline=false,
-       bottomline=false,
-       leftline=false,
-       rightline=false]
-   \end{mdframed}
-\end{excode}
-mdframed環境を使う場合はlisting環境が使えずキャプションを通常どおりにつけることができない.その為,captionof環境を使う.使い方としては次の通りである.
-\begin{excode}
-    \usepackage{caption}
-    ...
-    \captionof{*}{*}
-    ...
-\end{excode}
-captionof環境はcaptionパッケージの中にあるので読み込む.captionof環境の第一引数にはキャプションの種類を記述する.メジャーなのは次の3つである.
-\begin{table}[htbp]
-    \begin{tabular}{|c|c|} \hline
-        表示 & 引数に取る文字列 \\ \hline
-        図○ & figure \\ \hline
-        表○ & table \\ \hline
-        Listing○ & listing \\ \hline
-    \end{tabular}
-\end{table}
-第二引数にはキャプションにする文章を入力する.
+  	\begin{tabular}{|c|c|} \hline
+  		pt & ポイント(\verb|1pt| $\approx$ \verb|0.35mm|) \\ \hline
+  		pc & パイカ(\verb|1pc| = \verb|12pt|) \\ \hline
+  		bp & big point(\verb|1bp| $\approx$ \verb|1in|) \\ \hline
+  		dd & didot point(\verb|1dd| $\approx$ \verb|1.07pt|) \\ \hline
+  		mm & ミリメートル(\verb|1mm| $\approx$ \verb|2.85pt|) \\ \hline
+  		cm & センチメートル(\verb|1cm| $\approx$ \verb|10mm|) \\ \hline
+  		in & インチ(\verb|1in| = \verb|25.4mm|) \\ \hline
+  		em & 現在有効な書体の文字Mの幅 \\ \hline
+  		ex & 現在有効な書体の文字xの高さ \\ \hline
+  		zw & 現在有効な全角漢字の幅 \\ \hline
+  		zh & 現在有効な全角漢字の高さ \\ \hline
+  	\end{tabular}
+  \end{table}
 
-\section{目次の作り方及び目次に表示する節のレベルを設定する}
-\begin{excode}
-    \tableofcontents
-\end{excode}
-表示はできるが\verb|\subsubsection|などの小々節は目次に載らない.こういう時は次のコマンドをプリアンブル部に記述する.
-\begin{excode}
-    \setcounter{tocdepth}{3}
-\end{excode}
-tocdepthというのは目次に載せる節の深さを表しておりデフォルトで2である.よって\verb|\subsubsection|以下のレベルは目次に載らない.なので\verb|\setcounter|コマンドで変数に入っている値を変更する.値を増やせば細かく目次に載り,逆に値を減らせば大雑把な目次になる.
-\section{目次にありもしない項目を加える}
-\verb|\addcontentsline{file}{type}{text}|でsectionで生成している節以外に目次に項目を増やせる. \\
-\begin{table}[H]
-    \caption{引数fileの取りうる値}
-    \begin{tabular}{c|c}
-        toc & partやsection,subsectionなどで生成される一般的な目次 \\ \hline
-        figure & 図の一覧目次 \\ \hline
-        table & 表の一覧目次 \\
-    \end{tabular}
-\end{table}
-\noindent
-type \\
-sectionなら本来の目次のsection並の字下げを行う.subsectionも然り.\\
-text \\
-目次に追加したい項目を書く
-\section{条件分岐を行うマクロなどifthenパッケージ}
-条件分岐,命題,繰り返しなどほとんどプログラミング言語に近づけたような制御マクロが詰まっているifthenパッケージ\verb|\usepackage{ifthen}|とすれば使える.
-詳しい使い方はここのURLから
-\small
-\begin{verbatim}
-http://qiita.com/zr_tex8r/items/71ae46c9c4e8cb575073#_reference-9aee38fe27ee3682b28a
-\end{verbatim}
-\section{\LaTeX 3でデフォルトになるマクロ定義マクロが入ったxparseパッケージ}
-\LaTeX3のチームが開発したオプション引数が複数指定できたりと本来のマクロ定義コマンドよりも自由度が高いマクロ定義コマンドが入ったxparseパッケージ.使い方は以下から
-\small
-\begin{verbatim}
-http://qiita.com/zr_tex8r/items/50168ad7087516c3e139
-\end{verbatim}
-\section{マクロ内でverbatim環境を使う方法}
-\verb|\usepackage{fancybox}|でfancyboxパッケージを読み込む.以下のように使う.
-\begin{excode}
-    \NewDocumentEnvironment{myverbatim}{%
-    \VerbatimEnvironment
-    \begin{Verbatim}
-}
-{
-    \end{Verbatim}
-}%
-\end{excode}
-このように最初に\verb|\VerbatimEnvironment|を指定するのがミソである.
-\section{ラベルからページ番号を参照する方法}
-\verb|\label{}|などとすると\verb|\ref{}|で表，図，数式などの番号を参照することができる．しかし，\verb|\pageref{}|とすると，参照元のページ番号を出力することができる
-\section{inputした\TeX ファイルなどを拡大・縮小する方法}
-graphcsパッケージを読み込み次のように記述する.
-\begin{excode}
-    \usepackage{graphcs}
-    \begin{document}
-    ...
-    \scalebox{倍率}{\input{ファイル名}}
-    ...
-    \end{document}
-\end{excode}
-\section{組版におけるクォートのルールについて}
+  \section{新しい長さの定義}
 
-\LaTeX などの組版処理システムにおいてはクォートで文章を囲む時にルールがある.
-シングルクォートで囲む時は始まりは\verb|`|(バッククォート)で始まり, \verb|'|(シングルクォート)で終わる.ダブルクォートで囲む時は始まりは\verb|``|(バッククォート2つ)始まり,\verb|''|(シングルクォート2つ)で終わる.
+  次のようにすることで新しい長さを定義できる.
+  \begin{excode}
+      \newlength{長さの名前}
+      \setlength{長さの名前}{初期値}
+  \end{excode}
 
-\section{ページを跨ぐ表の作り方}
-通常の表はtabular環境とtable環境を使って作るが1ページに収まらないような大きな表は通常,ページを跨ぐことができない.この場合はlongtableパッケージを読み込みlongtable環境を使う.
-\begin{excode}
-    \usepackage{longtable}
-    \begin{document}
-    \begin{longtable}[表の位置指定]{行数指定}
-        ...
-    \end{longtable}
-\end{excode}
-\begin{table}[htbp]
+  \section{特殊文字の出力}
+
+  \begin{table}[H]
     \centering
-    \caption{表の位置指定に使えるオプション}
-    \begin{tabular}{c|c}
-        オプション & 効果 \\ \hline
-        l & 左詰め \\ \hline
-        c & 中央揃え \\ \hline
-        r & 右詰め \\ 
-    \end{tabular}
-\end{table}
-行数指定は通常のtabular環境と一緒である.
+  	\begin{tabular}{|c|c|} \hline
+  		出力 & 入力 \\ \hline
+  		\# & \verb|\#| \\ \hline
+  		\$ & \verb|\$| \\ \hline
+  		\% & \verb|\%| \\ \hline
+  		\& & \verb|\&| \\ \hline
+  		\textasciitilde & \verb|\textasciitilde| \\ \hline
+  		\_ & \verb|\_| \\ \hline
+  		\textasciicircum & \verb|\textasciicircum| \\ \hline
+  		\textbackslash & \verb|\textbackslash|(数式モード内では\verb|\backslash|) \\ \hline
+  		\{ & \verb|\{| \\ \hline
+  		\} & \verb|\}| \\ \hline
+  	\end{tabular}
+  \end{table}
 
-\section{表の各セルの高さを調整する方法}
-全てセルを高くするには次のようにする.
-\begin{excode}
-    \renewcommand{\arraystretch{拡大率}}
-\end{excode}
-一部のセルだけ高くするにはruleコマンドを使う.
-\begin{excode}
-\newlength{¥myheight}
-\setlength{¥myheight}{1cm}
-\newlength{¥myheighta}
-\setlength{¥myheighta}{2cm}
+  \section{余白レイアウトの仕方}
 
-\begin{tabular}{|c|c|}
-\hline
-default & default \\
-\hline
-\rule{0cm}{¥myheight} 1cmの高さ & ああ \\
-\hline
-\rule{0cm}{¥myheighta} 2cmの高さ & いい \\
-\hline
-default & default \\
-\hline
-\end{tabular}
-\end{excode}
-このコードの実行結果は次のようになる.
-\input{table00612}
+  \begin{excode}
+    \usepackage{\layout}
+    \begin{document}
+      \layout
+      ...
+    \end{document}
+  \end{excode}
+  でレイアウトを出力して余白を調整したい部分の名称を確認する.その後プリアンブル部で
+  \begin{excode}
+          \setlength{余白部分の名称}{長さ}
+          \setlength{余白部分の名称}{長さ}
+          $\vdots$
+  \end{excode}
+  のように調整する.長さの調整の時に例えばcm指定の場合はtruecmのように先頭にtrueをつけなければ実際の長さにならない.
 
-\section{美しいボックスを描けるtcolorbox環境}
-使うにはtcolorboxパッケージを読み込む.例などは http://ftp.jaist.ac.jp/pub/CTAN/macros/latex/contrib/tcolorbox/tcolorbox.pdfに載っている.
+  \section{複数の著者と所属をつける方法}
 
-\section{tcolorbox環境で美しい表を作る}
-作るにはtcolorbox,array,tabularxのパッケージを読み込む.tcolorbox環境のオプションで次のように指定することで表を作ることができる.
-\begin{excode}
-    \begin{tcolorbox}[tabularx*={...]
-            ...
-    \end{tcolorbox}
-\end{excode}
-オプション内の...に続くのは実際にtabularxで使える命令やオプションである.
-例として,同じディレクトリにあるtcolortable.texを参照するとよい.
+  \verb|\usepackage{authblk}|でパッケージを読み込んで
+  \begin{excode}
+      \author[1]{hoge}
+      \author[2]{fuga}
+
+      \affil[1]{piyo}
+      \affil[2]{hogehoge}
+  \end{excode}
+
+  \section{段落の最初に字下げしない方法}
+
+  字下げしたくない段落で\verb|\noindent|と書く.すべての段落で字下げを行わないようにするにはプリアンブル部に\verb|\parindent = 0pt|と書く.
+
+  \section{mintedで載せたソースコードがページをまたぐ場合}
+
+  通常,mintedで載せたソースコードはページを跨いでも適切に処置してくれるが以下のいずれかの条件を満たす時,ソースコードがページをはみ出す.
+  \begin{itemize}
+      \item listing環境を使った時
+      \item mintedにbgcolorオプションを付加した時
+  \end{itemize}
+  mintedで載せたソースコードが1ページに収まらない場合はmdfaramed環境を使う.次のような構造で使う.
+  \begin{excode}
+      \usepackage{mdframed}
+      \usepackage[cache=false]{minted}
+      \begin{document}
+      \begin{mdframed}
+          \begin{minted}{c}
+          ...
+          \end{minted}
+      \end{mdframed}
+      \end{document}
+  \end{excode}
+  mdframed環境はデフォルトでボックスで囲まれているのでmintedの上下左右の線とかぶる場合がある.その場合は次のようなオプションをつけるとよい.
+  \begin{excode}
+     \begin{mdframed}[
+         topline=false,
+         bottomline=false,
+         leftline=false,
+         rightline=false]
+     \end{mdframed}
+  \end{excode}
+  mdframed環境を使う場合はlisting環境が使えずキャプションを通常どおりにつけることができない.その為,captionof環境を使う.使い方としては次の通りである.
+  \begin{excode}
+      \usepackage{caption}
+      ...
+      \captionof{*}{*}
+      ...
+  \end{excode}
+  captionof環境はcaptionパッケージの中にあるので読み込む.captionof環境の第一引数にはキャプションの種類を記述する.メジャーなのは次の3つである.
+  \begin{table}[htbp]
+      \begin{tabular}{|c|c|} \hline
+          表示 & 引数に取る文字列 \\ \hline
+          図○ & figure \\ \hline
+          表○ & table \\ \hline
+          Listing○ & listing \\ \hline
+      \end{tabular}
+  \end{table}
+  第二引数にはキャプションにする文章を入力する.
+
+  \section{目次の作り方及び目次に表示する節のレベルを設定する}
+
+  \begin{excode}
+      \tableofcontents
+  \end{excode}
+  表示はできるが\verb|\subsubsection|などの小々節は目次に載らない.こういう時は次のコマンドをプリアンブル部に記述する.
+  \begin{excode}
+      \setcounter{tocdepth}{3}
+  \end{excode}
+  tocdepthというのは目次に載せる節の深さを表しておりデフォルトで2である.よって\verb|\subsubsection|以下のレベルは目次に載らない.なので\verb|\setcounter|コマンドで変数に入っている値を変更する.値を増やせば細かく目次に載り,逆に値を減らせば大雑把な目次になる.
+  \section{目次にありもしない項目を加える}
+  \verb|\addcontentsline{file}{type}{text}|でsectionで生成している節以外に目次に項目を増やせる. \\
+  \begin{table}[H]
+      \caption{引数fileの取りうる値}
+      \begin{tabular}{c|c}
+          toc & partやsection,subsectionなどで生成される一般的な目次 \\ \hline
+          figure & 図の一覧目次 \\ \hline
+          table & 表の一覧目次 \\
+      \end{tabular}
+  \end{table}
+  \noindent
+  type \\
+  sectionなら本来の目次のsection並の字下げを行う.subsectionも然り.\\
+  text \\
+  目次に追加したい項目を書く
+  \section{条件分岐を行うマクロなどifthenパッケージ}
+  条件分岐,命題,繰り返しなどほとんどプログラミング言語に近づけたような制御マクロが詰まっているifthenパッケージ\verb|\usepackage{ifthen}|とすれば使える.
+  詳しい使い方はここのURLから
+  \small
+  \begin{verbatim}
+  http://qiita.com/zr_tex8r/items/71ae46c9c4e8cb575073#_reference-9aee38fe27ee3682b28a
+  \end{verbatim}
+
+  \section{\LaTeX 3でデフォルトになるマクロ定義マクロが入ったxparseパッケージ}
+
+  \LaTeX3のチームが開発したオプション引数が複数指定できたりと本来のマクロ定義コマンドよりも自由度が高いマクロ定義コマンドが入ったxparseパッケージ.使い方は以下から
+  \small
+  \begin{verbatim}
+  http://qiita.com/zr_tex8r/items/50168ad7087516c3e139
+  \end{verbatim}
+  \section{マクロ内でverbatim環境を使う方法}
+  \verb|\usepackage{fancybox}|でfancyboxパッケージを読み込む.以下のように使う.
+  \begin{excode}
+      \NewDocumentEnvironment{myverbatim}{%
+      \VerbatimEnvironment
+      \begin{Verbatim}
+  }
+  {
+      \end{Verbatim}
+  }%
+  \end{excode}
+  このように最初に\verb|\VerbatimEnvironment|を指定するのがミソである.
+
+  \section{ラベルからページ番号を参照する方法}
+
+  \verb|\label{}|などとすると\verb|\ref{}|で表，図，数式などの番号を参照することができる．しかし，\verb|\pageref{}|とすると，参照元のページ番号を出力することができる
+  \section{inputした\TeX ファイルなどを拡大・縮小する方法}
+  graphcsパッケージを読み込み次のように記述する.
+  \begin{excode}
+      \usepackage{graphcs}
+      \begin{document}
+      ...
+      \scalebox{倍率}{\input{ファイル名}}
+      ...
+      \end{document}
+  \end{excode}
+
+  \section{組版におけるクォートのルールについて}
+
+  \LaTeX などの組版処理システムにおいてはクォートで文章を囲む時にルールがある.
+  シングルクォートで囲む時は始まりは\verb|`|(バッククォート)で始まり, \verb|'|(シングルクォート)で終わる.ダブルクォートで囲む時は始まりは\verb|``|(バッククォート2つ)始まり,\verb|''|(シングルクォート2つ)で終わる.
+
+  \section{ページを跨ぐ表の作り方}
+
+  通常の表はtabular環境とtable環境を使って作るが1ページに収まらないような大きな表は通常,ページを跨ぐことができない.この場合はlongtableパッケージを読み込みlongtable環境を使う.
+  \begin{excode}
+      \usepackage{longtable}
+      \begin{document}
+      \begin{longtable}[表の位置指定]{行数指定}
+          ...
+      \end{longtable}
+  \end{excode}
+  \begin{table}[htbp]
+      \centering
+      \caption{表の位置指定に使えるオプション}
+      \begin{tabular}{c|c}
+          オプション & 効果 \\ \hline
+          l & 左詰め \\ \hline
+          c & 中央揃え \\ \hline
+          r & 右詰め \\
+      \end{tabular}
+  \end{table}
+  行数指定は通常のtabular環境と一緒である.
+
+  \section{表の各セルの高さを調整する方法}
+
+  全てセルを高くするには次のようにする.
+  \begin{excode}
+      \renewcommand{\arraystretch{拡大率}}
+  \end{excode}
+  一部のセルだけ高くするにはruleコマンドを使う.
+  \begin{excode}
+  \newlength{¥myheight}
+  \setlength{¥myheight}{1cm}
+  \newlength{¥myheighta}
+  \setlength{¥myheighta}{2cm}
+
+  \begin{tabular}{|c|c|}
+  \hline
+  default & default \\
+  \hline
+  \rule{0cm}{¥myheight} 1cmの高さ & ああ \\
+  \hline
+  \rule{0cm}{¥myheighta} 2cmの高さ & いい \\
+  \hline
+  default & default \\
+  \hline
+  \end{tabular}
+  \end{excode}
+  このコードの実行結果は次のようになる.
+  \input{test}
+
+  \section{美しいボックスを描けるtcolorbox環境}
+
+  使うにはtcolorboxパッケージを読み込む.例などは http://ftp.jaist.ac.jp/pub/CTAN/macros/latex/contrib/tcolorbox/tcolorbox.pdfに載っている.
+
+  \section{tcolorbox環境で美しい表を作る}
+
+  作るにはtcolorbox,array,tabularxのパッケージを読み込む.tcolorbox環境のオプションで次のように指定することで表を作ることができる.
+  \begin{excode}
+      \begin{tcolorbox}[tabularx*={...]
+              ...
+      \end{tcolorbox}
+  \end{excode}
+  オプション内の...に続くのは実際にtabularxで使える命令やオプションである.
+  例として,同じディレクトリにあるtcolortable.texを参照するとよい.
+
+  \makeatletter
+  \section{マクロで@を使う意味}
+
+  \verb|@|はカテゴリーコードで12に割り振られているのでその他の文字として扱われる。つまり、普通の\TeX の文書を作っていて出てくる文字ではないという扱いである。そのため、マクロなどの名前に\verb|@|を使うのは重複を防止するためである。\verb|@|のカテゴリーコードを変更するには\verb|\makeatletter|と\verb|\makeatother|で囲む。
+  \makeatother
+
+  \section{マクロの行末に\%を入れる理由}
+  \TeX のスタイルファイルなどを見てみると行末に\%だけが記述されていることがある．これは\TeX の空白のルール上の対策である．
+  \TeX の空白が無視されるかどうかは次のルールに従う．
+  \begin{itemize}
+    \item 行頭と行末にある空白文字・タブは全て無視される。
+    \item コメントの直後の改行文字は無視される。
+    \item 空行（連続する改行文字）は『改段落』を表す。
+    \item （空行以外の）改行文字は空白文字になる。 \\
+          （ただし pTeX 系で、行末が和文文字の場合は改行文字は無視される。）
+    \item 1つ以上の空白文字・タブの並びは単一の空白文字と見做される。
+    \item 制御語（名前が英字からなる制御綴）の直後の空白文字は無視される。
+    \item それ以外の空白もじが『意味のある空白文字』となる。
+  \end{itemize}
 \end{document}
-

@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+      \PYG{k}{\PYGZbs{}usepackage}\PYG{n+nb}{\PYGZob{}}caption\PYG{n+nb}{\PYGZcb{}}
+      ...
+      \PYG{k}{\PYGZbs{}captionof}\PYG{n+nb}{\PYGZob{}}*\PYG{n+nb}{\PYGZcb{}\PYGZob{}}*\PYG{n+nb}{\PYGZcb{}}
+      ...
+\end{Verbatim}
