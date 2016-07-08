@@ -307,14 +307,57 @@
   \section{マクロの行末に\%を入れる理由}
   \TeX のスタイルファイルなどを見てみると行末に\%だけが記述されていることがある．これは\TeX の空白のルール上の対策である．
   \TeX の空白が無視されるかどうかは次のルールに従う．
-  \begin{itemize}
+  \begin{enumerate}
     \item 行頭と行末にある空白文字・タブは全て無視される。
-    \item コメントの直後の改行文字は無視される。
+    \item コメントの直後の改行文字は無視される。%
+    \label{item:ignoreComNexInd}
     \item 空行（連続する改行文字）は『改段落』を表す。
     \item （空行以外の）改行文字は空白文字になる。 \\
-          （ただし pTeX 系で、行末が和文文字の場合は改行文字は無視される。）
+          （ただし pTeX 系で、行末が和文文字の場合は改行文字は無視される。）%
+          \label{item:convIndToSpa}
     \item 1つ以上の空白文字・タブの並びは単一の空白文字と見做される。
     \item 制御語（名前が英字からなる制御綴）の直後の空白文字は無視される。
-    \item それ以外の空白もじが『意味のある空白文字』となる。
-  \end{itemize}
+    \item それ以外の空白文字が『意味のある空白文字』となる。
+  \end{enumerate}
+  上記のルールのうちの\ref{item:convIndToSpa}番の影響で空白が入ってしまう為，
+  ルールの\ref{item:ignoreComNexInd}番に従って対策をする．よって\%を入れる．
+
+  \section{sectionなどのフォントを変える方法}
+  sectionのフォントはデフォルトで欧文:サンセリフ体，和文:ゴシック体である．
+  これを変えるには次の\verb|\headfont|を再定義する．
+  \begin{excode}
+    \renewcommand{\headfont}{<和文のフォント><欧文のフォント>}
+  \end{excode}
+  \section{文章全体のフォントを変える方法}
+  文章全体の欧文及び和文のフォントを変えるには次のコマンドを再定義する．
+  \begin{excode}
+    \renewcommand{\kanjifamilydefault}{\gtdefault}
+    \renewcommand{\familydefault}{\sfdefault}
+  \end{excode}
+  マクロ名はフォント名+familyではなく，フォント名+defaultなので注意
+  \section{\TeX で標準入力及び標準出力を行う方法}
+  次のコマンドで標準入力を行う．
+  \begin{excode}
+    \newcount \tmp
+    \read-1 \tmp
+  \end{excode}
+  次のコマンドで標準出力を行う
+  \begin{excode}
+    \message{何か入力してください}
+  \end{excode}
+  \section{beamerでノートを使う方法}
+  PowerPointのような発表者用のノートはbeamerでは次のように入力する．
+  \begin{excode}
+    \note{...}
+  \end{excode}
+  また，ノートだけを表示したい場合はプリアンブルで
+  \begin{excode}
+    \documentclass[notes=only]{beamer}
+  \end{excode}
+  という風にする．
+  また，どちらも表示したい場合は
+  \begin{excode}
+    \documentclass[notes]{beamer}
+  \end{excode}
+  とする．
 \end{document}
