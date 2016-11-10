@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}kanjifamilydefault}\PYG{n+nb}{\PYGZcb{}\PYGZob{}}\PYG{k}{\PYGZbs{}gtdefault}\PYG{n+nb}{\PYGZcb{}}
+    \PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}familydefault}\PYG{n+nb}{\PYGZcb{}\PYGZob{}}\PYG{k}{\PYGZbs{}sfdefault}\PYG{n+nb}{\PYGZcb{}}
+\end{Verbatim}

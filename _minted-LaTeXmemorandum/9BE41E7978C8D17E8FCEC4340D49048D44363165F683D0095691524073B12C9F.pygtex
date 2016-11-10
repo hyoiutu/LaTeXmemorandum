@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+      \PYG{k}{\PYGZbs{}usepackage}\PYG{n+nb}{\PYGZob{}}graphcs\PYG{n+nb}{\PYGZcb{}}
+      \PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}document\PYG{n+nb}{\PYGZcb{}}
+      ...
+      \PYG{k}{\PYGZbs{}scalebox}\PYG{n+nb}{\PYGZob{}}倍率\PYG{n+nb}{\PYGZcb{}\PYGZob{}}\PYG{k}{\PYGZbs{}input}\PYG{n+nb}{\PYGZob{}}ファイル名\PYG{n+nb}{\PYGZcb{}\PYGZcb{}}
+      ...
+      \PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}document\PYG{n+nb}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,13 +1,16 @@
 % ----- define document
-\documentclass[12pt]{ltjsarticle}
+\documentclass[12pt,uplatex]{jsarticle}
 % ----- read package
-\usepackage{luatexja}
-\usepackage{luatexja-fontspec}
-\usepackage{lltjp-tascmac}
+%\usepackage{luatexja}
+%\usepackage{luatexja-fontspec}
+%\usepackage{lltjp-tascmac}
+\usepackage{ascmac}
 \usepackage{here}
 \usepackage{xparse}
 \usepackage{verbatim}
 \usepackage{minted}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
 % ----- define my Macros
 \newminted[excode]{latex}{%
     linenos,
@@ -18,7 +21,7 @@
 \NewDocumentEnvironment{myverbatim}{}{\verbatim}{\endverbatim}
 % ----- title page
 \title{\LaTeX 覚書}
-\author{\vspace{-1\zh}}\date{\vspace{-1\zh}}
+\author{\vspace{-1zh}}\date{\vspace{-1zh}}
 % ----- main pages
 \begin{document}
   % ----- output title page\end{docu\end{document}ment}
@@ -189,18 +192,11 @@
   \section{条件分岐を行うマクロなどifthenパッケージ}
   条件分岐,命題,繰り返しなどほとんどプログラミング言語に近づけたような制御マクロが詰まっているifthenパッケージ\verb|\usepackage{ifthen}|とすれば使える.
   詳しい使い方はここのURLから
-  \small
-  \begin{verbatim}
-  http://qiita.com/zr_tex8r/items/71ae46c9c4e8cb575073#_reference-9aee38fe27ee3682b28a
-  \end{verbatim}
-
+  \url{http://qiita.com/zr_tex8r/items/71ae46c9c4e8cb575073#_reference-9aee38fe27ee3682b28a}
   \section{\LaTeX 3でデフォルトになるマクロ定義マクロが入ったxparseパッケージ}
 
-  \LaTeX3のチームが開発したオプション引数が複数指定できたりと本来のマクロ定義コマンドよりも自由度が高いマクロ定義コマンドが入ったxparseパッケージ.使い方は以下から
-  \small
-  \begin{verbatim}
-  http://qiita.com/zr_tex8r/items/50168ad7087516c3e139
-  \end{verbatim}
+  \LaTeX 3のチームが開発したオプション引数が複数指定できたりと本来のマクロ定義コマンドよりも自由度が高いマクロ定義コマンドが入ったxparseパッケージ.使い方は以下から
+  \url{http://qiita.com/zr_tex8r/items/50168ad7087516c3e139}
   \section{マクロ内でverbatim環境を使う方法}
   \verb|\usepackage{fancybox}|でfancyboxパッケージを読み込む.以下のように使う.
   \begin{excode}
@@ -285,7 +281,7 @@
 
   \section{美しいボックスを描けるtcolorbox環境}
 
-  使うにはtcolorboxパッケージを読み込む.例などは http://ftp.jaist.ac.jp/pub/CTAN/macros/latex/contrib/tcolorbox/tcolorbox.pdfに載っている.
+  使うにはtcolorboxパッケージを読み込む.例などは \url{http://ftp.jaist.ac.jp/pub/CTAN/macros/latex/contrib/tcolorbox/tcolorbox.pdf}に載っている.
 
   \section{tcolorbox環境で美しい表を作る}
 
@@ -360,4 +356,13 @@
     \documentclass[notes]{beamer}
   \end{excode}
   とする．
+  \section{mintedでアセンブラのソースを載せる時の注意}
+  アセンブラといえどアセンブラの種類はCPUの種類だけあると言っていいほど書き方があるので
+  mintedの設定を間違えないように気をつける．
+  minted環境の第一引数にasmと持ってきがちだがこれはX86のアセンブラなのでintelのアセンブラとは
+  違うものとなっている．アセンブラごとの引数の違いはURL先のそれぞれのShort Nameを参照すること．\\
+  \url{http://pygments.org/docs/lexers/} \\
+  mintedはpymentsをベースにシンタックスハイライトしている．pytmentsは字句解析(lexer)を行う
+  ツールなので引数のとり方によっては字句解析の結果，過多なシンタックスハイライトがついてる場合が
+  あるので邪魔だと思う場合は名前にlexerとついていないものを選ぶこと．因みにasmは字句解析を行う．
 \end{document}

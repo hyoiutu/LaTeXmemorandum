@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k}{\PYGZbs{}usepackage}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}layout}\PYG{n+nb}{\PYGZcb{}}
+    \PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}document\PYG{n+nb}{\PYGZcb{}}
+      \PYG{k}{\PYGZbs{}layout}
+      ...
+    \PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}document\PYG{n+nb}{\PYGZcb{}}
+\end{Verbatim}

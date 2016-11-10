@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+      \PYG{k}{\PYGZbs{}usepackage}\PYG{n+nb}{\PYGZob{}}longtable\PYG{n+nb}{\PYGZcb{}}
+      \PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}document\PYG{n+nb}{\PYGZcb{}}
+      \PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}longtable\PYG{n+nb}{\PYGZcb{}}[表の位置指定]\PYG{n+nb}{\PYGZob{}}行数指定\PYG{n+nb}{\PYGZcb{}}
+          ...
+      \PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}longtable\PYG{n+nb}{\PYGZcb{}}
+\end{Verbatim}
