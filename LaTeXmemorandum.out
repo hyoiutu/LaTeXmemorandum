@@ -25,3 +25,5 @@
 \BOOKMARK [1][-]{section.25}{TeXで標準入力及び標準出力を行う方法}{}% 25
 \BOOKMARK [1][-]{section.26}{beamerでノートを使う方法}{}% 26
 \BOOKMARK [1][-]{section.27}{mintedでアセンブラのソースを載せる時の注意}{}% 27
+\BOOKMARK [1][-]{section.28}{TeXで言語処理する第一歩}{}% 28
+\BOOKMARK [2][-]{subsection.28.1}{TeXで文字列置換}{section.28}% 29

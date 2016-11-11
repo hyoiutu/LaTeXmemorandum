@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k}{\PYGZbs{}@}tfor\PYG{k}{\PYGZbs{}ch}:=\PYGZsh{}1\PYG{k}{\PYGZbs{}do}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}ifthenelse}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}equal}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}ch}\PYG{n+nb}{\PYGZcb{}\PYGZob{}}x\PYG{n+nb}{\PYGZcb{}\PYGZcb{}\PYGZob{}}\PYG{k}{\PYGZbs{}textbackslash} x\PYG{n+nb}{\PYGZcb{}\PYGZob{}}\PYG{k}{\PYGZbs{}ch}\PYG{n+nb}{\PYGZcb{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\end{Verbatim}

@@ -365,4 +365,14 @@
   mintedはpymentsをベースにシンタックスハイライトしている．pytmentsは字句解析(lexer)を行う
   ツールなので引数のとり方によっては字句解析の結果，過多なシンタックスハイライトがついてる場合が
   あるので邪魔だと思う場合は名前にlexerとついていないものを選ぶこと．因みにasmは字句解析を行う．
+
+  \section{\TeX で言語処理する第一歩}
+  \subsection{\TeX で文字列置換}
+  \TeX で文字列置換を行うには\verb|\@tfor\ch:=hoge\do{}|を使う．
+  これはhogeという文字列を\verb|\@tfor|で一文字ずつ見ていくというマクロである．
+  \verb|\@tfor|で回している間のカウンタ変数は\verb|\ch|である．
+  次に例を挙げる．次の例はxという文字を\textbackslash xに置き換えるマクロである．
+  \begin{excode}
+    \@tfor\ch:=#1\do{\ifthenelse{\equal{\ch}{x}}{\textbackslash x}{\ch}}%
+  \end{excode}
 \end{document}
