@@ -375,4 +375,24 @@
   \begin{excode}
     \@tfor\ch:=#1\do{\ifthenelse{\equal{\ch}{x}}{\textbackslash x}{\ch}}%
   \end{excode}
+
+  \section{ドットの長さで後尾を揃えてくれる\textbackslash dotfill}
+  \verb|\dotfill|はドットの前の文字列の長さに合わせてドットを出力して後尾の位置を合わせてくれる
+  マクロである．以下，例．
+  \begin{excode}
+     おこ \dotfill レベル1 \\
+     激おこ \dotfill レベル2 \\
+     激おこぷんぷん丸 \dotfill レベル3 \\
+     ムカ着火ファイア \dotfill レベル4 \\
+     カム着火ｲﾝﾌｪﾙﾉｫｫｫｵｵｵｳ \dotfill レベル5 \\
+     げきオコスティックファイナリアリティぷんぷんドリーム \dotfill レベル6
+  \end{excode}
+  \begin{itembox}[l]{出力結果}
+    おこ \dotfill レベル1 \\
+    激おこ \dotfill レベル2 \\
+    激おこぷんぷん丸 \dotfill レベル3 \\
+    ムカ着火ファイア \dotfill レベル4 \\
+    カム着火ｲﾝﾌｪﾙﾉｫｫｫｵｵｵｳ \dotfill レベル5 \\
+    げきオコスティックファイナリアリティぷんぷんドリーム \dotfill レベル6
+  \end{itembox}
 \end{document}
