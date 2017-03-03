@@ -28,3 +28,8 @@
 \BOOKMARK [1][-]{section.28}{TeXで言語処理する第一歩}{}% 28
 \BOOKMARK [2][-]{subsection.28.1}{TeXで文字列置換}{section.28}% 29
 \BOOKMARK [1][-]{section.29}{ドットの長さで後尾を揃えてくれる\134dotfill}{}% 30
+\BOOKMARK [1][-]{section.30}{verbatim環境内で自動改行を有効にするspverbatim環境}{}% 31
+\BOOKMARK [1][-]{section.31}{LaTeXの自動改行のしくみ}{}% 32
+\BOOKMARK [2][-]{subsection.31.1}{クォートがおかしな位置に来る}{section.31}% 33
+\BOOKMARK [2][-]{subsection.31.2}{英文が右にはみ出す}{section.31}% 34
+\BOOKMARK [1][-]{section.32}{jsbookクラスの左綴じ，右綴じ}{}% 35

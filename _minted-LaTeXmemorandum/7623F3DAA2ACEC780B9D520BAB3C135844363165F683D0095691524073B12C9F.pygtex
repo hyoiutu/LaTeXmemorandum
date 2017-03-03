@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{c}{\PYGZpc{} 文章の横幅に合わせる場合}
+    \PYG{k}{\PYGZbs{}resizebox}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}textwidth}\PYG{n+nb}{\PYGZcb{}\PYGZob{}}!\PYG{n+nb}{\PYGZcb{}\PYGZob{}}\PYG{k}{\PYGZbs{}input}\PYG{n+nb}{\PYGZob{}}ファイル名\PYG{n+nb}{\PYGZcb{}\PYGZcb{}}
+    \PYG{c}{\PYGZpc{} 文章の縦幅に合わせる場合}
+    \PYG{k}{\PYGZbs{}resizebox}\PYG{n+nb}{\PYGZob{}}!\PYG{n+nb}{\PYGZcb{}\PYGZob{}}\PYG{k}{\PYGZbs{}textheight}\PYG{n+nb}{\PYGZcb{}\PYGZob{}}\PYG{k}{\PYGZbs{}input}\PYG{n+nb}{\PYGZob{}}ファイル名\PYG{n+nb}{\PYGZcb{}\PYGZcb{}}
+\end{Verbatim}

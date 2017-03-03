@@ -8,9 +8,9 @@
   \PYG{k}{\PYGZbs{}hline}
   default \PYG{n+nb}{\PYGZam{}} default \PYG{k}{\PYGZbs{}\PYGZbs{}}
   \PYG{k}{\PYGZbs{}hline}
-  \PYG{k}{\PYGZbs{}rule}\PYG{n+nb}{\PYGZob{}}0cm\PYG{n+nb}{\PYGZcb{}\PYGZob{}}¥myheight\PYG{n+nb}{\PYGZcb{}} 1cmの高さ \PYG{n+nb}{\PYGZam{}} ああ \PYG{k}{\PYGZbs{}\PYGZbs{}}
+  \PYG{k}{\PYGZbs{}rule}\PYG{n+nb}{\PYGZob{}}0cm\PYG{n+nb}{\PYGZcb{}\PYGZob{}}\PYG{k}{\PYGZbs{}myheight}\PYG{n+nb}{\PYGZcb{}} 1cmの高さ \PYG{n+nb}{\PYGZam{}} ああ \PYG{k}{\PYGZbs{}\PYGZbs{}}
   \PYG{k}{\PYGZbs{}hline}
-  \PYG{k}{\PYGZbs{}rule}\PYG{n+nb}{\PYGZob{}}0cm\PYG{n+nb}{\PYGZcb{}\PYGZob{}}¥myheighta\PYG{n+nb}{\PYGZcb{}} 2cmの高さ \PYG{n+nb}{\PYGZam{}} いい \PYG{k}{\PYGZbs{}\PYGZbs{}}
+  \PYG{k}{\PYGZbs{}rule}\PYG{n+nb}{\PYGZob{}}0cm\PYG{n+nb}{\PYGZcb{}\PYGZob{}}\PYG{k}{\PYGZbs{}myheighta}\PYG{n+nb}{\PYGZcb{}} 2cmの高さ \PYG{n+nb}{\PYGZam{}} いい \PYG{k}{\PYGZbs{}\PYGZbs{}}
   \PYG{k}{\PYGZbs{}hline}
   default \PYG{n+nb}{\PYGZam{}} default \PYG{k}{\PYGZbs{}\PYGZbs{}}
   \PYG{k}{\PYGZbs{}hline}

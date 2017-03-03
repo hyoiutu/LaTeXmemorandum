@@ -11,6 +11,7 @@
 \usepackage{minted}
 \usepackage[dvipdfmx]{hyperref}
 \usepackage{pxjahyper}
+\usepackage{lipsum}
 % ----- define my Macros
 \newminted[excode]{latex}{%
     linenos,
@@ -58,6 +59,8 @@
   		zh & 現在有効な全角漢字の高さ \\ \hline
   	\end{tabular}
   \end{table}
+  ただし，zw,zhはp\TeX , p\LaTeX , up\LaTeX などのみに定義されている．
+  Lua\TeX や Xe\TeX で使いたい場合は\verb|\zw|,\verb|\zh|と指定する．
 
   \section{新しい長さの定義}
 
@@ -101,7 +104,10 @@
           \setlength{余白部分の名称}{長さ}
           $\vdots$
   \end{excode}
-  のように調整する.長さの調整の時に例えばcm指定の場合はtruecmのように先頭にtrueをつけなければ実際の長さにならない.
+  のように調整する.\LaTeX は文字サイズや用紙サイズを変更する時，
+  標準のサイズに合わせてから拡大・縮小を行い，設定したサイズに変更をする.
+  よって，通常のcm,mmを使って長さを調節した場合，拡大・縮小時に本来の長さも拡大・縮小されてしまう．
+  これを防ぐにはcm,mmの代わりにtruecm,truemmを使う．
 
   \section{複数の著者と所属をつける方法}
 
@@ -128,7 +134,10 @@
   mintedで載せたソースコードが1ページに収まらない場合はmdfaramed環境を使う.次のような構造で使う.
   \begin{excode}
       \usepackage{mdframed}
+      % TeXLive2015まで
       \usepackage[cache=false]{minted}
+      % TeXLive2016以降
+      \usepackage{minted}
       \begin{document}
       \begin{mdframed}
           \begin{minted}{c}
@@ -208,7 +217,7 @@
       \end{Verbatim}
   }%
   \end{excode}
-  このように最初に\verb|\VerbatimEnvironment|を指定するのがミソである.
+  このように最初に\verb|\VerbatimEnvironment|を指定する必要がある.
 
   \section{ラベルからページ番号を参照する方法}
 
@@ -223,11 +232,23 @@
       ...
       \end{document}
   \end{excode}
+  また，横幅や縦幅に合わせたい場合は\verb|\resizebox|を使う．
+  \begin{excode}
+    % 文章の横幅に合わせる場合
+    \resizebox{\textwidth}{!}{\input{ファイル名}}
+    % 文章の縦幅に合わせる場合
+    \resizebox{!}{\textheight}{\input{ファイル名}}
+  \end{excode}
 
   \section{組版におけるクォートのルールについて}
 
   \LaTeX などの組版処理システムにおいてはクォートで文章を囲む時にルールがある.
-  シングルクォートで囲む時は始まりは\verb|`|(バッククォート)で始まり, \verb|'|(シングルクォート)で終わる.ダブルクォートで囲む時は始まりは\verb|``|(バッククォート2つ)始まり,\verb|''|(シングルクォート2つ)で終わる.
+  シングルクォートで囲む時は始まりは\verb|`|(バッククォート)で始まり,
+  \verb|'|(シングルクォート)で終わる.
+  ダブルクォートで囲む時は始まりは\verb|``|(バッククォート2つ)始まり,
+  \verb|''|(シングルクォート2つ)で終わる.
+
+  禁則処理の関係上，和文をクォートで囲む場合は全角のダブルクォートを使う(\ref{sec:autobreak}節参照)．
 
   \section{ページを跨ぐ表の作り方}
 
@@ -268,9 +289,9 @@
   \hline
   default & default \\
   \hline
-  \rule{0cm}{¥myheight} 1cmの高さ & ああ \\
+  \rule{0cm}{\myheight} 1cmの高さ & ああ \\
   \hline
-  \rule{0cm}{¥myheighta} 2cmの高さ & いい \\
+  \rule{0cm}{\myheighta} 2cmの高さ & いい \\
   \hline
   default & default \\
   \hline
@@ -335,7 +356,7 @@
   次のコマンドで標準入力を行う．
   \begin{excode}
     \newcount \tmp
-    \read-1 \tmp
+    \read-1 to \tmp
   \end{excode}
   次のコマンドで標準出力を行う
   \begin{excode}
@@ -399,4 +420,51 @@
   \section{verbatim環境内で自動改行を有効にするspverbatim環境}
   verbatim環境は入力したテキストをそのまま出力する為，自動改行されない．
   spverbatim環境を使うと自動改行を有効にする．
-\end{document}
+
+  \section{\LaTeX の自動改行のしくみ}\label{sec:autobreak}
+  \LaTeX の自動改行は禁則処理に基づいて行われる．
+  全角と半角の禁則処理は異なる．
+  \begin{table}[htbp]
+    \centering
+    \caption{全角と半角の禁則処理概要}
+    \begin{tabular}{l|l}
+      全角 or 半角 & 禁則処理概要 \\ \hline
+      全角 & 全角括弧や全角クォートは分割不可 \\ \hline
+      半角 & 空白以外全て分割不可 \\
+    \end{tabular}
+  \end{table}
+  自動改行のしくみが分からないと直感的に理解することができない仕様がある．
+  以下に事例を挙げる．
+  \subsection{クォートがおかしな位置に来る}
+  これは次のような事例である．\\
+  あああああああああああああああああああああああああああああああああああああああ``こんなかんじ''
+
+  この事例では本来ならば行末禁則文字である開きダブルクォートが行末に来ている．これは開きダブルクォートが
+  全角文字についている為，全角の禁則処理が適用されてしまったという事例である．全角の禁則処理には
+  半角の開きダブルクォートの禁則処理に関して記述されていない為，開きダブルクォートは分割可能と判断されてしまった．
+  この，対策方法としては全角の開き及び閉じダブルクォートを使うという方法がある．
+  先程の例文中のダブルクォートを全角にして表示する．\\
+  あああああああああああああああああああああああああああああああああああああああ“こんなかんじ”
+
+  \subsection{英文が右にはみ出す}
+  以下にはみ出る英文の例を示す．\\
+  Lopadotemachoselachogaleokranioleipsanodrimhypotrimmatosilphioparaomelitokatakechymenokichlepikossyphophattoperisteralektryonoptekephalliokigklopeleiolagoio-siraiobaphetraganopterygon.
+
+  欧文は空白のみ分割可能である為，例文のような空白が全くない場合右に文字がはみ出る．
+
+  \section{jsbookクラスの左綴じ，右綴じ}
+  jsbookクラスは製本することを前提としている為，余白が左右で異なる．両開きのページならば，
+  左右交互に余白が変わる．openrightオプションを使うことで章の始まりは必ず右ページに来る．
+  \begin{excode}
+    \documentclass[openright]{jsbook}
+  \end{excode}
+  章の始まりがどちらに来てもよいという場合はopenanyオプションを使う．
+  ただし，必ず左ページに来るというオプションはないため，以下のようにして
+  左右の余白を交換する．ただし，バッドノウハウの為非推奨である．
+  \begin{excode}
+    \newlength{\tmphogehoge}
+    \setlength{\tmphogehoge}{\oddsidemargin}
+    \setlength{\oddsidemargin}{\evensidemargin}
+    \setlength{\evensidemargin}{\tmphogehoge}
+  \end{excode}
+  \end{document}
