@@ -496,4 +496,32 @@
       \end{verbatim}
     \end{onlyenv}
   \end{excode}
+
+  \section{newmintedで定義した環境にオプションを付けたい場合}
+  ソースコードを記載する環境としてminted環境があり，自分のオプションを盛り込んだ
+  新しい環境を定義することが可能である．
+  \begin{excode}
+    \newminted{myminted}{c}{linenos}
+    \begin{document}
+      \begin{myminted}
+        #include<stdio.h>
+        int main(void){
+          puts("hello");
+          return 0;
+        }
+      \end{myminted}
+    \end{document}
+  \end{excode}
+  しかし，新しく定義した環境に加えてオプション引数を付けることはそのままではできない．
+  オプション引数を付けたい場合は新しく定義した環境名にアスタリスクを付け，
+  オプション引数としてではなく，第二引数として記述することでオプションを加えることができる．
+  \begin{excode}
+    \begin{myminted*}{fontsize=\Large}
+      #include<stdio.h>
+      int main(void){
+        puts("hello");
+        return 0;
+      }
+    \end{myminted*}
+  \end{excode}
   \end{document}

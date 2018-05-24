@@ -35,3 +35,4 @@
 \BOOKMARK [2][-]{subsection.31.2}{英文が右にはみ出す}{section.31}% 34
 \BOOKMARK [1][-]{section.32}{jsbookクラスの左綴じ，右綴じ}{}% 35
 \BOOKMARK [1][-]{section.33}{Beamerでonlyコマンド内にvebatimなコマンドまたは環境を含む部分の注意}{}% 36
+\BOOKMARK [1][-]{section.34}{newmintedで定義した環境にオプションを付けたい場合}{}% 37
