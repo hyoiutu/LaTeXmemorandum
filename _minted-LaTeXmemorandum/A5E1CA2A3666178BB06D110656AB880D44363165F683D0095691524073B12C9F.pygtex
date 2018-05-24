@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-     \PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}mdframed\PYG{n+nb}{\PYGZcb{}}[
-         topline=false,
-         bottomline=false,
-         leftline=false,
-         rightline=false]
-     \PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}mdframed\PYG{n+nb}{\PYGZcb{}}
-\end{Verbatim}

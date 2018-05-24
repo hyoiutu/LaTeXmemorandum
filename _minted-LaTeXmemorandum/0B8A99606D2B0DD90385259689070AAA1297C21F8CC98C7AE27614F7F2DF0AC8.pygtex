@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-    \PYG{k}{\PYGZbs{}newcount} \PYG{k}{\PYGZbs{}tmp}
-    \PYG{k}{\PYGZbs{}read}\PYGZhy{}1 \PYG{k}{\PYGZbs{}tmp}
-\end{Verbatim}

@@ -1,7 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-      \PYG{k}{\PYGZbs{}author}\PYG{n+na}{[1]}\PYG{n+nb}{\PYGZob{}}hoge\PYG{n+nb}{\PYGZcb{}}
-      \PYG{k}{\PYGZbs{}author}\PYG{n+na}{[2]}\PYG{n+nb}{\PYGZob{}}fuga\PYG{n+nb}{\PYGZcb{}}
-
-      \PYG{k}{\PYGZbs{}affil}\PYG{n+na}{[1]}\PYG{n+nb}{\PYGZob{}}piyo\PYG{n+nb}{\PYGZcb{}}
-      \PYG{k}{\PYGZbs{}affil}\PYG{n+na}{[2]}\PYG{n+nb}{\PYGZob{}}hogehoge\PYG{n+nb}{\PYGZcb{}}
-\end{Verbatim}
