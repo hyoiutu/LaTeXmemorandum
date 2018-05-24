@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k}{\PYGZbs{}only}\PYGZlt{}1\PYGZgt{}\PYG{n+nb}{\PYGZob{}}1番目に表示\PYG{n+nb}{\PYGZcb{}}
+    \PYG{k}{\PYGZbs{}only}\PYGZlt{}2\PYGZgt{}\PYG{n+nb}{\PYGZob{}}
+      \PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}verbatim\PYG{n+nb}{\PYGZcb{}}
+        2番目に表示
+      \PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}verbatim\PYG{n+nb}{\PYGZcb{}}
+    \PYG{n+nb}{\PYGZcb{}}
+\end{Verbatim}

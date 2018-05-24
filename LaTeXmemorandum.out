@@ -1,3 +1,4 @@
+%このファイルは日本語文字を含みます.
 \BOOKMARK [1][-]{section.1}{\134author及び\134dateの省略方法}{}% 1
 \BOOKMARK [1][-]{section.2}{長さの単位}{}% 2
 \BOOKMARK [1][-]{section.3}{新しい長さの定義}{}% 3
@@ -33,3 +34,4 @@
 \BOOKMARK [2][-]{subsection.31.1}{クォートがおかしな位置に来る}{section.31}% 33
 \BOOKMARK [2][-]{subsection.31.2}{英文が右にはみ出す}{section.31}% 34
 \BOOKMARK [1][-]{section.32}{jsbookクラスの左綴じ，右綴じ}{}% 35
+\BOOKMARK [1][-]{section.33}{Beamerでonlyコマンド内にvebatimなコマンドまたは環境を含む部分の注意}{}% 36

@@ -467,4 +467,33 @@
     \setlength{\oddsidemargin}{\evensidemargin}
     \setlength{\evensidemargin}{\tmphogehoge}
   \end{excode}
+
+  \section{Beamerでonlyコマンド内にvebatimなコマンドまたは環境を含む部分の注意}
+  Beamerでは表示指定子の\textbackslash onlyを使う場合が多々ある．
+  \begin{excode}
+    \only<1>{1番目に表示}
+    \only<2>{2番目に表示}
+    \only<3>{3番目に表示}
+  \end{excode}
+  しかし，以下のようにonlyコマンドの中にverbatimな環境やコマンドなどを入れると，
+  エラーが起こる．
+  \begin{excode}
+    \only<1>{1番目に表示}
+    \only<2>{
+      \begin{verbatim}
+        2番目に表示
+      \end{verbatim}
+    }
+  \end{excode}
+  よって，onlyコマンドと同じ効果を持つonlyenv環境を用いる．
+  使い方は簡単でonlyコマンドで囲んでいた部分を\textbackslash begin\{onlyenv\}
+  \textbackslash end\{onlyenv\}に置換するだけである．
+  \begin{excode}
+    \only<1>{1番目に表示}
+    \begin{onlyenv}{2}
+      \begin{verbatim}
+        2番目に表示
+      \end{verbatim}
+    \end{onlyenv}
+  \end{excode}
   \end{document}
